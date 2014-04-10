@@ -1107,6 +1107,7 @@
             }
             this.query = null;
             this.highlight = !!o.highlight;
+            this.highlightSplit = !!o.highlightSplit;
             this.name = o.name || _.getUniqueId();
             this.source = o.source;
             this.displayFn = getDisplayFn(o.display || o.displayKey);
@@ -1149,7 +1150,7 @@
                     $suggestions.append.apply($suggestions, nodes);
                     that.highlight && highlight({
                         node: $suggestions[0],
-                        pattern: query
+                        pattern: that.highlightSplit ? $.trim(query).split(' ') : query
                     });
                     return $suggestions;
                     function getSuggestionNode(suggestion) {
@@ -1642,6 +1643,7 @@
                     var $input = $(this), eventBus, typeahead;
                     _.each(datasets, function(d) {
                         d.highlight = !!o.highlight;
+                        d.highlightSplit = !!o.highlightSplit;
                     });
                     typeahead = new Typeahead({
                         input: $input,
