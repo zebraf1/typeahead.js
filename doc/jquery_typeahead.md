@@ -250,6 +250,10 @@ When initializing a typeahead, there are a number of options you can configure.
   for the current query in text nodes will be wrapped in a `strong` element. 
   Defaults to `false`.
 
+* `highlightSplit` – If `true`, the search term is tokenized into words (split ty spaces).
+  This will highlight all search words regardless of their order. Works with fuzzy search type.
+  Defaults to `false`.
+
 * `hint` – If `false`, the typeahead will not show a hint. Defaults to `true`.
 
 * `minLength` – The minimum character length needed before suggestions start 
